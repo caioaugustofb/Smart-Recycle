@@ -6,7 +6,7 @@ function StatScreen ()  {
   return (
     <View>
       <Text>
-        piroca
+        GRAFICOS AQUI
       </Text>
     </View>
      

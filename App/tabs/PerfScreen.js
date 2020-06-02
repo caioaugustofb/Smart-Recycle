@@ -7,7 +7,7 @@ function PerfScreen ()  {
   <ScrollView>
     <View>
       <Text>
-        pirocajhafhskadfhkjaslfhalskjdfhalkjsdhfalksdjhf
+        PERFIL AQ
       </Text>
     </View>
   </ScrollView>  
