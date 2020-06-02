@@ -1,39 +1,64 @@
 import React from 'react';
 import { View,Text } from 'react-native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MenuScreen from './MenuScreen';
 import StatScreen from './StatScreen';
 import PerfScreen from './PerfScreen';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import Icon from 'react-native-vector-icons/MaterialIcons'
+Icon.loadFont();
 
-// import { Container } from './styles';
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialBottomTabNavigator();
+
 
 function HomeScreen() {
+  
     return (
       
-        <Tab.Navigator>
+        <Tab.Navigator
+            initialRouteName="Menu"
+            activeColor="#ffffff"
+            inactiveColor="#3e2465"
+            barStyle={{ backgroundColor: '#000000',height: "12%" }}
+        >
 
            <Tab.Screen 
-           name="Menu" 
-           component={MenuScreen} 
-           independent={true} 
-           style={{ tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="home" color={color} size={26} />
-          ),}}
+              name="Menu" 
+              component={MenuScreen} 
+              independent={true} 
+              options={{
+                tabBarIcon: ({ color }) => (
+                  <Icon name="home" color={color} size={30} />
+                ),
+              }}         
            />
-
-
-
-           <Tab.Screen name="Stat" component={StatScreen} independent={true} /> 
-           <Tab.Screen name="Perf" component={PerfScreen} independent={true} />        
-
+           <Tab.Screen 
+              name="Stat" 
+              component={StatScreen} 
+              independent={true} 
+              options={{
+                tabBarLabel: 'Status',
+                tabBarIcon: ({ color }) => (
+                  <Icon name="assessment" color={color} size={30} />
+                ),
+              }} 
+           /> 
+           <Tab.Screen 
+              name="Perf" 
+              component={PerfScreen} 
+              independent={true} 
+              options={{
+                tabBarLabel: 'Perfil',
+                tabBarIcon: ({ color }) => (
+                  <Icon name="person" color={color} size={30} />
+                ),
+              }} />        
+           
         </Tab.Navigator>
     
 
     );
   }
-
+ 
 
 export default HomeScreen;

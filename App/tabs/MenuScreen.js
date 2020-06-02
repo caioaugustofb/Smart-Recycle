@@ -14,11 +14,14 @@ import {
 } from 'react-native';
 
 
+
 function MenuScreen ()  {
   return (
-
-     
+      
      <View style={styles.all}>
+        <View style={styles.topBa}>
+
+        </View> 
       <ScrollView style={{flex: 1,}}>
        <Text>
          pirocajhafhskadfhkjaslfhalskjdfhalkjsdhfalksdjhf
@@ -36,8 +39,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#40F1C6",
     alignItems: 'center',
     color: '#000000',
-    
 },
+  topBar: {
+    flex: 1,
+    height: "20%",
+    width: "100%",
+    backgroundColor: "#000000",
+  },
 
     
 });
