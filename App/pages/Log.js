@@ -29,7 +29,7 @@ function LogScreen({ navigation }) {
 
 function verificar () {
     
-   if (email == 'Dan' && senha == 'mimi') {
+   if (email == 'Danilo@email.com' && senha == '12345') {
     navigation.navigate(name="Home", component={HomeScreen})
    }
    else {
@@ -47,7 +47,7 @@ function verificar () {
         </View>
 
             <Text style={{fontWeight: "bold", marginTop: "25%", marginLeft: "20%",}}>E-mail</Text>  
-            <TextInput onChangeText={(text) => onChangeText(text)}  style={styles.Tinput} value={email}/>
+            <TextInput keyboardType={'email-address'} onChangeText={(text) => onChangeText(text)}  style={styles.Tinput} value={email}/>
 
             <Text style={{fontWeight: "bold", marginLeft: "20%",}}>Senha</Text> 
        <TextInput secureTextEntry={true} textContentType="password"  onChangeText={(text) => onChangeText2(text)} value={senha} style={styles.Tinput}/>

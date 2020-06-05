@@ -163,10 +163,10 @@ trdinput: {
     borderRadius: 7,
 },
 stretch: {
-  width: 350,
-  height: 90,
-  resizeMode: 'stretch',
-  marginTop: "10%",
+    width: 350,
+    height: 90,
+    resizeMode: 'stretch',
+    marginTop: "10%",
 },
     
 });
