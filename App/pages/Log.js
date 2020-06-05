@@ -12,35 +12,47 @@ import { View,
    KeyboardAvoidingView,
    Image,
    Header,
+   useState
 } from 'react-native';
 import CadScreen from './Cad';
 import HomeScreen from '../tabs/HomeScreen';
+import { Value } from 'react-native-reanimated';
 
- //onPress={Keyboard.dismiss}
+
+
+
 
 function LogScreen({ navigation }) {
+
+  const [email, onChangeText] = React.useState('');
+  const [senha, onChangeText2] = React.useState('');
+
+function verificar () {
+    
+   if (email == 'Dan' && senha == 'mimi') {
+    navigation.navigate(name="Home", component={HomeScreen})
+   }
+   else {
+       alert('Email ou senha incorreta')
+   }  
+}
   return (
-
-
-
 <View style={styles.all}>
     
     <ScrollView style={styles.container}>
-    <KeyboardAvoidingView 
-        behavior={Platform.OS == "ios" ? "padding" : "height"}
-        style={styles.container}>  
+    <KeyboardAvoidingView>  
 
         <View style={styles.Image}>
             <Text style={{fontWeight: "bold",color:'#ffffff', marginTop: "45%",  }}>Icone</Text>
         </View>
 
             <Text style={{fontWeight: "bold", marginTop: "25%", marginLeft: "20%",}}>E-mail</Text>  
-       <TextInput style={styles.Tinput}/> 
+            <TextInput onChangeText={(text) => onChangeText(text)}  style={styles.Tinput} value={email}/>
 
             <Text style={{fontWeight: "bold", marginLeft: "20%",}}>Senha</Text> 
-       <TextInput secureTextEntry={true} textContentType="password"  style={styles.Tinput}/>
+       <TextInput secureTextEntry={true} textContentType="password"  onChangeText={(text) => onChangeText2(text)} value={senha} style={styles.Tinput}/>
 
-        <TouchableOpacity onPress={() => navigation.navigate(name="Home", component={HomeScreen})}>
+        <TouchableOpacity onPress={() => verificar()}>
 
              <View style={styles.buttons}>
                  <Text style={styles.buttonText}>LOGIN</Text>

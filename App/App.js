@@ -12,6 +12,7 @@ import Cad2Screen from './pages/Cad2';
 import Cad3Screen from './pages/Cad3';
 import HomeScreen from './tabs/HomeScreen';
 
+
 const Stack = createStackNavigator();
 
 
