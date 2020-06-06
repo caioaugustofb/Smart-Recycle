@@ -9,6 +9,8 @@ def add_flipper_pods!(versions = {})
   versions['Flipper-PeerTalk'] ||= '~> 0.0.4'
   versions['Flipper-RSocket'] ||= '~> 1.0'
 
+  pod 'Firebase/Auth'
+  pod 'Firebase/Analytics'
   pod 'FlipperKit', versions['Flipper'], :configuration => 'Debug'
   pod 'FlipperKit/FlipperKitLayoutPlugin', versions['Flipper'], :configuration => 'Debug'
   pod 'FlipperKit/SKIOSNetworkPlugin', versions['Flipper'], :configuration => 'Debug'
@@ -45,7 +47,8 @@ def flipper_post_install(installer)
 end
 
 target 'SmartRecycle' do
-  # Pods for SmartRecycle
+  # Pods for SmartRecycle 
+
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"

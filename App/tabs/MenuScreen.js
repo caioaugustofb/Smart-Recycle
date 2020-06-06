@@ -19,7 +19,7 @@ function MenuScreen ()  {
   return (
       
      <View style={styles.all}>
-      <ScrollView style={{flex: 1,}}>
+      <ScrollView style={{flex: 1, width:'100%'}}>
                   <TouchableOpacity onPress={() => alert("nada ainda")}>
 
                       <View style={styles.buttons}>

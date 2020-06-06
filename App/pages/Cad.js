@@ -22,8 +22,10 @@ import { View,
  //onPress={Keyboard.dismiss}
 
 function CadScreen({ navigation }) {
+
   return (
 
+    
 
 
 <View style={styles.all}>
