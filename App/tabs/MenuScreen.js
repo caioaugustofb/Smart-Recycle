@@ -19,6 +19,11 @@ function MenuScreen ()  {
   return (
       
      <View style={styles.all}>
+       <View style={styles.tab}>
+         <Image 
+        style={styles.tabimage}
+        source={require('./tab.png')}/>
+       </View>
       <ScrollView style={{flex: 1, width:'100%'}}>
                   <TouchableOpacity onPress={() => alert("nada ainda")}>
 
@@ -211,6 +216,15 @@ stretch: {
   marginTop: "5%",
   borderRadius: 20,
   marginLeft: 160,
+},
+//imagem
+tab: {
+  height: '20%',
+  backgroundColor: '#000',
+  paddingLeft: '40%',
+},
+tabimage: {
+  marginTop: '20%',
 },
 });
 

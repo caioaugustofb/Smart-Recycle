@@ -24,6 +24,9 @@ PODS:
     - FirebaseAnalytics (= 6.5.1)
   - Firebase/CoreOnly (6.25.0):
     - FirebaseCore (= 6.7.1)
+  - Firebase/Database (6.25.0):
+    - Firebase/CoreOnly
+    - FirebaseDatabase (~> 6.2.1)
   - FirebaseAnalytics (6.5.1):
     - FirebaseCore (~> 6.7)
     - FirebaseInstallations (~> 1.2)
@@ -52,6 +55,10 @@ PODS:
     - GoogleUtilities/Logger (~> 6.5)
     - nanopb (~> 1.30905.0)
   - FirebaseCoreDiagnosticsInterop (1.2.0)
+  - FirebaseDatabase (6.2.1):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 6.0)
+    - leveldb-library (~> 1.22)
   - FirebaseInstallations (1.3.0):
     - FirebaseCore (~> 6.6)
     - GoogleUtilities/Environment (~> 6.6)
@@ -143,6 +150,7 @@ PODS:
   - GoogleUtilities/UserDefaults (6.6.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.4.0)
+  - leveldb-library (1.22)
   - nanopb (1.30905.0):
     - nanopb/decode (= 1.30905.0)
     - nanopb/encode (= 1.30905.0)
@@ -381,6 +389,10 @@ PODS:
   - RNFBApp (7.2.0):
     - Firebase/CoreOnly (~> 6.25.0)
     - React
+  - RNFBDatabase (7.2.1):
+    - Firebase/Database (~> 6.25.0)
+    - React
+    - RNFBApp
   - RNFirebase (5.6.0):
     - Firebase/Core
     - React
@@ -408,6 +420,7 @@ DEPENDENCIES:
   - FBReactNativeSpec (from `../node_modules/react-native/Libraries/FBReactNativeSpec`)
   - Firebase/Analytics
   - Firebase/Auth
+  - Firebase/Database
   - Flipper (~> 0.33.1)
   - Flipper-DoubleConversion (= 1.1.7)
   - Flipper-Folly (~> 2.1)
@@ -454,6 +467,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
+  - "RNFBDatabase (from `../node_modules/@react-native-firebase/database`)"
   - RNFirebase (from `../node_modules/react-native-firebase/ios`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
@@ -475,6 +489,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseCoreDiagnosticsInterop
+    - FirebaseDatabase
     - FirebaseInstallations
     - Flipper
     - Flipper-DoubleConversion
@@ -488,6 +503,7 @@ SPEC REPOS:
     - GoogleDataTransportCCTSupport
     - GoogleUtilities
     - GTMSessionFetcher
+    - leveldb-library
     - nanopb
     - OpenSSL-Universal
     - PromisesObjC
@@ -548,6 +564,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/masked-view"
   RNFBApp:
     :path: "../node_modules/@react-native-firebase/app"
+  RNFBDatabase:
+    :path: "../node_modules/@react-native-firebase/database"
   RNFirebase:
     :path: "../node_modules/react-native-firebase/ios"
   RNGestureHandler:
@@ -577,6 +595,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 6023faeada5afa95a349fccafb40900e32e9ac42
   FirebaseCoreDiagnostics: 4a773a47bd83bbd5a9b1ccf1ce7caa8b2d535e67
   FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
+  FirebaseDatabase: 4e99c0c475d1ee0aa64ae2b53c93f80b7b60d7d9
   FirebaseInstallations: 6f5f680e65dc374397a483c32d1799ba822a395b
   Flipper: 6c1f484f9a88d30ab3e272800d53688439e50f69
   Flipper-DoubleConversion: 38631e41ef4f9b12861c67d17cb5518d06badc41
@@ -592,6 +611,7 @@ SPEC CHECKSUMS:
   GoogleDataTransportCCTSupport: d70a561f7d236af529fee598835caad5e25f6d3d
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+  leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   OpenSSL-Universal: 8b48cc0d10c1b2923617dfe5c178aa9ed2689355
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
@@ -617,6 +637,7 @@ SPEC CHECKSUMS:
   ReactCommon: ed4e11d27609d571e7eee8b65548efc191116eb3
   RNCMaskedView: f5c7d14d6847b7b44853f7acb6284c1da30a3459
   RNFBApp: 09caf098f066a44cf6f7ce9ea7dbc8b980ca10ec
+  RNFBDatabase: 483914b5088821b5ff83b3ed3c9eb97daac497ba
   RNFirebase: 37daa9a346d070f9f6ee1f3b4aaf4c8e3b1d5d1c
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNReanimated: b5ccb50650ba06f6e749c7c329a1bc3ae0c88b43
@@ -625,6 +646,6 @@ SPEC CHECKSUMS:
   Yoga: 3ebccbdd559724312790e7742142d062476b698e
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 06b879027cd8a8f3454360674a228ebcb60d1386
+PODFILE CHECKSUM: e2629c70216f5776ad570a109aca92af671aee00
 
 COCOAPODS: 1.9.0

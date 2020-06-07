@@ -14,20 +14,65 @@ import { View,
  
 
  } from 'react-native';
- import Cad2Screen from './Cad2';
+import Cad2Screen from './Cad2';
+import  Firebase  from 'react-native-firebase';
 
 
-
- //style={{marginBottom: 10,}}
- //onPress={Keyboard.dismiss}
 
 function CadScreen({ navigation }) {
 
+  
+  const config = {
+    apiKey: "AIzaSyATmgRvqUsACU5vOu30bXuRt4j_-bk4FM0",
+    authDomain: "smrcle.firebaseapp.com",
+    databaseURL: "https://smrcle.firebaseio.com",
+    projectId: "smrcle",
+    storageBucket: "smrcle.appspot.com",
+    messagingSenderId: "2074052194",
+    appId: "1:2074052194:web:c569f54b174f6619d8733b",
+    measurementId: "G-H1SJZVM1L6"
+};
+
+if (!Firebase.apps.length) {
+  Firebase.initializeApp(config);
+}
+ 
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [empresa, setEmpresa] = React.useState('');
+  const [endereco, setEndereco] = React.useState('');
+  const [complemento, setComplemento] = React.useState('');
+  const [coc, setCoc] = React.useState('');
+  const [cel, setCel] = React.useState('');
+  const [tel, setTel] = React.useState('');
+
+
+
+
+  async function handleSubmit(){
+    try {
+         await Firebase.auth()
+         .createUserWithEmailAndPassword( email, password )
+
+   
+
+     } catch (err) {
+         alert(err)
+     }
+    }
+  function writeUserdata() {
+       Firebase.database().ref('UserList/').push({
+          email,
+          empresa,
+          complemento,
+          coc,
+          cel,
+          tel,
+        })
+        
+    }
+
   return (
-
-    
-
-
 <View style={styles.all}>
     
     <ScrollView>
@@ -37,11 +82,18 @@ function CadScreen({ navigation }) {
         style={styles.stretch}
         source={require('./NUM1.png')}/>
 
-            <Text style={{fontWeight: "bold", marginTop: "10%",}}>Nome da Empresa ou Comprador:</Text>  
-       <TextInput style={styles.Tinput}/> 
+        <Text style={{fontWeight: "bold", marginTop: "10%",}}>Endereco de email:</Text>  
+       <TextInput value={email} onChangeText={setEmail} keyboardType={'email-address'} style={styles.Tinput}/> 
+
+            <Text style={{fontWeight: "bold", }}>Senha:</Text> 
+       <TextInput value={password} onChangeText={setPassword} secureTextEntry={true} textContentType="password" style={styles.Tinput}/>
+
+
+            <Text style={{fontWeight: "bold", }}>Nome da Empresa ou Comprador:</Text>  
+       <TextInput value={empresa} onChangeText={setEmpresa} style={styles.Tinput}/> 
 
             <Text style={{fontWeight: "bold", }}>Endereco:</Text> 
-       <TextInput style={styles.Tinput}/>
+       <TextInput value={endereco} onChangeText={setEndereco} style={styles.Tinput}/>
 
 
 
@@ -56,22 +108,22 @@ function CadScreen({ navigation }) {
 
 
     <View style={{flexDirection: 'row',}}>
-        <TextInput style={styles.subInput}/>
-        <TextInput style={styles.subInput}/>
+        <TextInput value={complemento} onChangeText={setComplemento} style={styles.subInput}/>
+        <TextInput value={coc} onChangeText={setCoc} keyboardType={'number-pad'} style={styles.subInput}/>
     </View>
 
 
 
     <Text style={{fontWeight: "bold",}}>Celular:</Text>  
-       <TextInput style={styles.phone}/> 
+       <TextInput value={cel} onChangeText={setCel} keyboardType={'number-pad'} style={styles.phone}/> 
 
-            <Text style={{fontWeight: "bold",}}>Telefone:</Text> 
-       <TextInput style={styles.phone}/>
+            <Text  style={{fontWeight: "bold",}}>Telefone:</Text> 
+       <TextInput value={tel} onChangeText={setTel} keyboardType={'number-pad'} style={styles.phone}/>
 
        
 
 
-        <TouchableOpacity onPress={() => navigation.navigate(name="Cad2", component={Cad2Screen})}>
+        <TouchableOpacity onPress={() => navigation.navigate(name="Cad2", component={Cad2Screen} && handleSubmit() && writeUserdata())}>
 
              <View style={styles.buttons}>
                  <Text style={styles.buttonText}>Proximo</Text>

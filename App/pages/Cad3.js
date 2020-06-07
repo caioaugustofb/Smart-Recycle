@@ -14,10 +14,8 @@ import { View,
  
 
  } from 'react-native';
- import Cad2Screen from './Cad2';
+ import LogScreen from './Log';
  
- //style={{marginBottom: 10,}}
- //onPress={Keyboard.dismiss}
 
 function Cad3Screen({ navigation }) {
   return (
@@ -37,7 +35,7 @@ function Cad3Screen({ navigation }) {
 <View style={{flexDirection: 'row',}}>
 
        
-        <TouchableOpacity onPress={() => navigation.navigate(name="Cad3", component={Cad3Screen})}>
+        <TouchableOpacity onPress={() =>  navigation.navigate(name="Log", component={LogScreen} && alert('Cadastro Concluido') )}>
 
              <View style={styles.buttons}>
                  <Text style={styles.buttonText}>Concluir</Text>

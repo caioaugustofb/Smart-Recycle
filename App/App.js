@@ -28,7 +28,7 @@ function App() {
         <Stack.Screen name="Cad" component={CadScreen} options={{ headerShown:false }}/>
         <Stack.Screen name="Cad2" component={Cad2Screen} options={{ headerShown:false }}/>
         <Stack.Screen name="Cad3" component={Cad3Screen} options={{ headerShown:false }}/>
-        <Stack.Screen name="Home" component={HomeScreen} independent={true} options={{ headerShown:false, gesturesEnabled: false,}}/>
+        <Stack.Screen name="Home" component={HomeScreen} independent={true} options={{gestureEnabled: false, headerShown:false, }}/>
          
       </Stack.Navigator>
     </NavigationContainer>

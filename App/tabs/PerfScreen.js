@@ -11,15 +11,29 @@ import {
   KeyboardAvoidingView,
   Image,
 } from 'react-native';
+import  Firebase  from 'react-native-firebase';
 
 
 function PerfScreen ()  {
+
+ function readUserData() {
+    Firebase.database().ref('UserList/').once('value', 
+    function a(snapshot) {
+        snapshot.val()
+    });
+}
+
   return (
     
   <View style={styles.all}>
-    <View style={{height:"10%", backgroundColor:"#fff" }}>
 
-    </View>
+        <View style={styles.tab}>
+            <Image 
+            onLoad={readUserData()}
+            style={styles.tabimage}
+            source={require('./tab.png')}/>
+        </View>
+
     <ScrollView >
     <View style={styles.top}> 
        
@@ -110,12 +124,13 @@ Image: {
   width: 100,
   alignItems: 'center',
   backgroundColor: '#fff',
-  marginBottom: 50,
+  marginBottom: 30,
   height: 100,
   borderRadius: 100,
   borderColor: '#000',
   borderWidth:1,
   marginLeft: '8%',
+  marginTop: '1%',
 },
 top: {
   flexDirection: 'row',
@@ -156,6 +171,15 @@ Image3: {
   height: 100,
   marginLeft: '3.5%',
   marginTop: "3%",
+},
+//imagem
+tab: {
+  height: '20%',
+  backgroundColor: '#000',
+  paddingLeft: '40%',
+},
+tabimage: {
+  marginTop: '20%',
 },
 });
 
