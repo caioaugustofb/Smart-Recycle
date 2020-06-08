@@ -11,7 +11,7 @@ import { View,
    TouchableWithoutFeedback,
    KeyboardAvoidingView,
    Image,
- 
+   ActivityIndicator,
 
  } from 'react-native';
 import Cad2Screen from './Cad2';
@@ -40,10 +40,12 @@ if (!Firebase.apps.length) {
  
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [activity, setActivity] = React.useState(false);
   
   async function handleSubmit(){
-
+    setActivity(false);
     try {
+      setActivity(true);
          await Firebase.auth()
          .createUserWithEmailAndPassword( email, password )
           
@@ -53,6 +55,7 @@ if (!Firebase.apps.length) {
         console.log('usuario logado')
      } catch (err) {
          alert(err)
+         setActivity(false);
      }
     } 
     
@@ -79,6 +82,7 @@ if (!Firebase.apps.length) {
 
              <View style={styles.buttons}>
                  <Text style={styles.buttonText}>Proximo</Text>
+                 <ActivityIndicator animating={activity} style={{marginTop: 19,}} size="large" color="#0000ff" />
              </View>
 
         </TouchableOpacity>

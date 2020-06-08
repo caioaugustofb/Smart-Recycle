@@ -14,6 +14,7 @@ import { View,
    Image,
    Header,
    useState,
+   ActivityIndicator
 } from 'react-native';
 import CadScreen from './Cad';
 import HomeScreen from '../tabs/HomeScreen';
@@ -27,19 +28,26 @@ function LogScreen({ navigation }) {
         console.log('login:',userId);
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
-     
+    const [activity, setActivity] = React.useState(false);
+    
 
  async function handleSubmit(){
 
-     
+    
+    setActivity(false);
 
     try {
+        setActivity(true);
+     console.log('try:',activity);
+
          await Firebase.auth().signInWithEmailAndPassword( email, password )
-         
-        
+       
          navigation.navigate(name="Home", component={HomeScreen});
+         
      } catch (err) {
+         setActivity(false);
          alert('Email ou Senha Incorretos')
+         console.log('try2:',activity);
      }
     }
 
@@ -63,6 +71,7 @@ function LogScreen({ navigation }) {
 
              <View style={styles.buttons}>
                  <Text style={styles.buttonText}>LOGIN</Text>
+                 <ActivityIndicator animating={activity} style={{marginTop: 19,}} size="large" color="#0000ff" />
              </View>
 
         </TouchableOpacity>
@@ -117,7 +126,7 @@ const styles = StyleSheet.create({
     width: "30%",
     alignItems: 'center',
     backgroundColor: '#000000',
-    marginBottom: 20,
+    marginBottom: 30,
     height: 30,
     borderRadius: 7,
     marginLeft: "35%",

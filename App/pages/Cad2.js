@@ -11,11 +11,13 @@ import { View,
    TouchableWithoutFeedback,
    KeyboardAvoidingView,
    Image,
+   ActivityIndicator,
  
 
  } from 'react-native';
  import Cad3Screen from './Cad3';
  import  Firebase  from 'react-native-firebase';
+ 
 
  
 
@@ -30,11 +32,13 @@ function CadScreen({ navigation }) {
   const [coc, setCoc] = React.useState('');
   const [cel, setCel] = React.useState('');
   const [tel, setTel] = React.useState('');
-
+  const [activity, setActivity] = React.useState(false);
  
 
   async function writeUserdata() {
+    
     try{
+      setActivity(true);
  const userId = Firebase.auth().currentUser.uid;
      Firebase.database().ref(`UserList/${userId}`).set({
         userId,
@@ -48,6 +52,7 @@ function CadScreen({ navigation }) {
       navigation.navigate(name="Cad3", component={Cad3Screen})
     } catch (err) {
       alert(err)
+      setActivity(false);
   }
   }
 
@@ -108,11 +113,11 @@ function CadScreen({ navigation }) {
         <TouchableOpacity onPress={() => writeUserdata()}>
 
              <View style={styles.buttons}>
-                 <Text style={styles.buttonText}>Proximo</Text>
+                 <Text style={styles.buttonText}>Proximo</Text>               
              </View>
 
         </TouchableOpacity>
-
+<ActivityIndicator animating={activity} style={{marginTop: 19,}} size="large" color="#0000ff" />
 </View>
 
      </KeyboardAvoidingView> 

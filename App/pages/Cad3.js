@@ -11,15 +11,48 @@ import { View,
    TouchableWithoutFeedback,
    KeyboardAvoidingView,
    Image,
- 
+   backgroundImage,
+   ActivityIndicator,
 
  } from 'react-native';
  import LogScreen from './Log';
- 
+ import ImagePicker from 'react-native-image-picker';
+
 
 function Cad3Screen({ navigation }) {
-  return (
 
+  const [image, setImage] = React.useState('');
+  const [activity, setActivity] = React.useState(false);
+
+  const options = {
+    title: 'Select Image',
+    storageOptions: {
+      skipBackup: true,
+      path: 'images'
+    }
+  };
+  
+ function pickImage()  {
+  setActivity(true);
+    ImagePicker.showImagePicker(options, response => {
+      if (response.didCancel) {
+        setActivity(false);
+        alert('You cancelled image picker 😟');
+      } else if (response.error) {
+        setActivity(false);
+        alert('And error occured: ', response.error);
+      } else {
+        setActivity(true);
+        const source = { uri: response.uri };
+        setImage({
+          imgSource: source
+        });
+        console.log(source);
+      }
+    });
+  };
+
+  return (
 
 
 <View style={styles.all}>
@@ -30,20 +63,26 @@ function Cad3Screen({ navigation }) {
     <Image
         style={styles.stretch}
         source={require('./NUM3.png')}/>
-   
-       
-<View style={{flexDirection: 'row',}}>
 
+   <Image
+        style={styles.img}
+        />
+
+
+        <TouchableOpacity onPress={() => (pickImage())} style={styles.Image}>
+            <Text style={{fontWeight: "bold",color:'#ffffff', marginTop: "45%",  }}>Icone</Text>
+        </TouchableOpacity>
        
         <TouchableOpacity onPress={() =>  navigation.navigate(name="Log", component={LogScreen} && alert('Cadastro Concluido') )}>
 
              <View style={styles.buttons}>
                  <Text style={styles.buttonText}>Concluir</Text>
+                 <ActivityIndicator animating={activity} style={{marginTop: 19,}} size="large" color="#0000ff" />
              </View>
 
         </TouchableOpacity>
 
-</View>
+
 
      </KeyboardAvoidingView> 
     </ScrollView>
@@ -72,7 +111,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     height: 30,
     borderRadius: 7,
-    marginLeft: "37%",
+    marginLeft: "30%",
 },
   buttonText: {
     marginTop: 2,
@@ -81,55 +120,28 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
 },
-subText: {
-    width: 170,
-    marginBottom: 1,
-    color: "#ffffff",
-    fontSize: 20,
-    fontWeight: "bold",     
-    flexDirection: 'row',  
-},
-subInput: {
-    width: 50,
-    marginBottom: 12,
-    height: 30,
-    color: "#ffffff",
-    fontSize: 20,
-    fontWeight: "bold",
-    backgroundColor: "#000000",
-    borderRadius: 7,
-    flexDirection: 'row',
-    marginRight: 5,
-    
-},
-Tinput: {
-    width: 350,
-    alignItems: 'center',
-    marginBottom: 12,
-    height: 30,
-    color: "#ffffff",
-    fontSize: 20,
-    fontWeight: "bold",
-    backgroundColor: "#000000",
-    borderRadius: 7,
-},
-trdinput: {
-    width: 50,
-    alignItems: 'center',
-    marginBottom: 12,
-    height: 30,
-    color: "#ffffff",
-    fontSize: 20,
-    fontWeight: "bold",
-    backgroundColor: "#000000",
-    borderRadius: 7,
-},
 stretch: {
   width: 350,
   height: 90,
   resizeMode: 'stretch',
   marginTop: "10%",
 },
-    
+Image: {
+  marginTop: "10%",
+  width: 150,
+  alignItems: 'center',
+  backgroundColor: '#000000',
+  marginBottom: 5,
+  height: 150,
+  borderRadius: 7,
+  marginLeft: 100,
+  borderRadius: 100,
+  marginLeft: "30%",
+},  
+img: {
+  width: 150,
+  height: 150,
+
+}
 });
 export default Cad3Screen;
