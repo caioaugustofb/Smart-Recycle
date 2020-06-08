@@ -14,24 +14,24 @@ import { View,
    Image,
    Header,
    useState,
-   useDispatch
 } from 'react-native';
 import CadScreen from './Cad';
 import HomeScreen from '../tabs/HomeScreen';
 import  Firebase  from 'react-native-firebase';
 
 
-
+ 
 function LogScreen({ navigation }) {
     
-
+     const userId = Firebase.auth().currentUser.uid;
+        console.log('login:',userId);
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
-
- 
+     
 
  async function handleSubmit(){
-       
+
+     
 
     try {
          await Firebase.auth().signInWithEmailAndPassword( email, password )

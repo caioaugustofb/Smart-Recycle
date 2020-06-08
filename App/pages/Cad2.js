@@ -15,11 +15,42 @@ import { View,
 
  } from 'react-native';
  import Cad3Screen from './Cad3';
+ import  Firebase  from 'react-native-firebase';
+
  
- //style={{marginBottom: 10,}}
- //onPress={Keyboard.dismiss}
 
 function CadScreen({ navigation }) {
+
+  const userId = Firebase.auth().currentUser.uid;
+  console.log('CAD2:',userId);
+  
+  const [empresa, setEmpresa] = React.useState('');
+  const [endereco, setEndereco] = React.useState('');
+  const [complemento, setComplemento] = React.useState('');
+  const [coc, setCoc] = React.useState('');
+  const [cel, setCel] = React.useState('');
+  const [tel, setTel] = React.useState('');
+
+ 
+
+  async function writeUserdata() {
+    try{
+ const userId = Firebase.auth().currentUser.uid;
+     Firebase.database().ref(`UserList/${userId}`).set({
+        userId,
+        empresa,
+        endereco,
+        complemento,
+        coc,
+        cel,
+        tel,
+      })
+      navigation.navigate(name="Cad3", component={Cad3Screen})
+    } catch (err) {
+      alert(err)
+  }
+  }
+
   return (
 
 
@@ -33,36 +64,36 @@ function CadScreen({ navigation }) {
         style={styles.stretch}
         source={require('./NUM2.png')}/>
 
-            <Text style={{fontWeight: "bold", marginTop: "10%",}}>Numero do cartao:</Text>  
-       <TextInput style={styles.Tinput}/> 
+<Text style={{fontWeight: "bold", }}>Nome da Empresa ou Comprador:</Text>  
+       <TextInput value={empresa} onChangeText={setEmpresa} style={styles.Tinput}/> 
 
-            <Text style={{fontWeight: "bold",}}>Nome do proprietario:</Text> 
-       <TextInput style={styles.Tinput}/>
+            <Text style={{fontWeight: "bold", }}>Endereco:</Text> 
+       <TextInput value={endereco} onChangeText={setEndereco} style={styles.Tinput}/>
 
 
 
 
        <View style={styles.subText}>
            
-        <Text style={{fontWeight: "bold", marginRight: 30, }}>Validade:</Text>  
-         
+        <Text style={{fontWeight: "bold", marginRight: 60, }}>Complemento:</Text>  
+        <Text style={{fontWeight: "bold", marginLeft: 33, }}>CNPJ ou CPF:</Text> 
         
        </View>
 
 
 
     <View style={{flexDirection: 'row',}}>
-        <TextInput style={styles.subInput}/>
-        <TextInput style={styles.subInput}/>
+        <TextInput value={complemento} onChangeText={setComplemento} style={styles.subInput}/>
+        <TextInput value={coc} onChangeText={setCoc} keyboardType={'number-pad'} style={styles.subInput}/>
     </View>
 
 
 
-    <Text style={{fontWeight: "bold",}}>Codigo de seguranca:</Text>  
-       <TextInput style={styles.trdinput}/> 
+    <Text style={{fontWeight: "bold",}}>Celular:</Text>  
+       <TextInput value={cel} onChangeText={setCel} keyboardType={'number-pad'} style={styles.phone}/> 
 
-            <Text style={{fontWeight: "bold",}}>Quantidade de sensores:</Text> 
-       <TextInput style={styles.trdinput}/>
+            <Text  style={{fontWeight: "bold",}}>Telefone:</Text> 
+       <TextInput value={tel} onChangeText={setTel} keyboardType={'number-pad'} style={styles.phone}/>
 
        
 <View style={{flexDirection: 'row',}}>
@@ -74,7 +105,7 @@ function CadScreen({ navigation }) {
              </View>
 
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate(name="Cad3", component={Cad3Screen})}>
+        <TouchableOpacity onPress={() => writeUserdata()}>
 
              <View style={styles.buttons}>
                  <Text style={styles.buttonText}>Proximo</Text>
@@ -120,25 +151,24 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
 },
 subText: {
-    width: 170,
-    marginBottom: 1,
-    color: "#ffffff",
-    fontSize: 20,
-    fontWeight: "bold",     
-    flexDirection: 'row',  
+  width: 170,
+  marginBottom: 1,
+  color: "#ffffff",
+  fontSize: 20,
+  fontWeight: "bold",     
+  flexDirection: 'row',  
 },
 subInput: {
-    width: 50,
-    marginBottom: 12,
-    height: 30,
-    color: "#ffffff",
-    fontSize: 20,
-    fontWeight: "bold",
-    backgroundColor: "#000000",
-    borderRadius: 7,
-    flexDirection: 'row',
-    marginRight: 5,
-    
+  width: 120,
+  marginBottom: 12,
+  height: 30,
+  color: "#ffffff",
+  fontSize: 20,
+  fontWeight: "bold",
+  backgroundColor: "#000000",
+  borderRadius: 7,
+  flexDirection: 'row',
+  marginRight: 60,
 },
 Tinput: {
     width: 350,
@@ -168,6 +198,16 @@ stretch: {
     resizeMode: 'stretch',
     marginTop: "10%",
 },
-    
+phone: {
+  width: 180,
+  alignItems: 'center',
+  marginBottom: 12,
+  height: 30,
+  color: "#ffffff",
+  fontSize: 20,
+  fontWeight: "bold",
+  backgroundColor: "#000000",
+  borderRadius: 7,
+},    
 });
 export default CadScreen;

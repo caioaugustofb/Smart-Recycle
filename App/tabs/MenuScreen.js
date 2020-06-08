@@ -12,15 +12,22 @@ import {
   Image,
 
 } from 'react-native';
+import  Firebase  from 'react-native-firebase';
 
 
 
 function MenuScreen ()  {
+
+ 
+  const userId = Firebase.auth().currentUser.uid;
+   
+
   return (
       
      <View style={styles.all}>
        <View style={styles.tab}>
          <Image 
+         onLoad={console.log('USER FDP:',userId)}
         style={styles.tabimage}
         source={require('./tab.png')}/>
        </View>

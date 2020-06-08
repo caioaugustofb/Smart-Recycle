@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {   
   View, 
   Header, 
@@ -15,23 +15,39 @@ import  Firebase  from 'react-native-firebase';
 
 
 function PerfScreen ()  {
+ 
 
- function readUserData() {
-    Firebase.database().ref('UserList/').once('value', 
-    function a(snapshot) {
-        snapshot.val()
+  const [endereco, setEndereco] = React.useState('');
+  const [empresa, setEmpresa] = React.useState('');
+  const [cel, setCel] = React.useState('');
+
+  const userId = Firebase.auth().currentUser.uid;
+
+    Firebase.database()
+    .ref(`UserList/${userId}/empresa`)
+    .once('value')
+    .then(snapshot => {
+    
+      setEmpresa(snapshot.val());
     });
-}
 
+    Firebase.database()
+    .ref(`UserList/${userId}/endereco`)
+    .once('value')
+    .then(snapshot => {
+    
+      setEndereco(snapshot.val());
+    });
+  
   return (
     
-  <View style={styles.all}>
+        <View style={styles.all}>
 
-        <View style={styles.tab}>
-            <Image 
-            onLoad={readUserData()}
-            style={styles.tabimage}
-            source={require('./tab.png')}/>
+            <View style={styles.tab}>
+                <Image 
+                
+                style={styles.tabimage}
+                source={require('./tab.png')}/>
         </View>
 
     <ScrollView >
@@ -41,8 +57,11 @@ function PerfScreen ()  {
             <Text style={{fontWeight: "bold",color:'#000', marginTop: "40%",  }}>Icone</Text>
         </View>
        <Text style={{fontWeight: "bold",color:'#000', marginTop: "6%",marginLeft: '5%',  }}>
-          Empresa ltda. S.A. 
+        Empresa: {empresa} {"\n"} Endereco: {endereco}
        </Text>
+       
+        
+       
     </View>
 
        <Text style={{fontWeight: "bold",color:'#000', marginTop: "10%",marginLeft: '5%',  }}>

@@ -20,7 +20,8 @@ import  Firebase  from 'react-native-firebase';
 
 
 function CadScreen({ navigation }) {
-
+  const userId = Firebase.auth().currentUser.uid;
+  console.log('cad:',userId);
   
   const config = {
     apiKey: "AIzaSyATmgRvqUsACU5vOu30bXuRt4j_-bk4FM0",
@@ -39,38 +40,22 @@ if (!Firebase.apps.length) {
  
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [empresa, setEmpresa] = React.useState('');
-  const [endereco, setEndereco] = React.useState('');
-  const [complemento, setComplemento] = React.useState('');
-  const [coc, setCoc] = React.useState('');
-  const [cel, setCel] = React.useState('');
-  const [tel, setTel] = React.useState('');
-
-
-
-
+  
   async function handleSubmit(){
+
     try {
          await Firebase.auth()
          .createUserWithEmailAndPassword( email, password )
-
-   
-
+          
+         Firebase.auth()
+         .signInWithEmailAndPassword( email, password )
+         navigation.navigate(name="Cad2", component={Cad2Screen})
+        console.log('usuario logado')
      } catch (err) {
          alert(err)
      }
-    }
-  function writeUserdata() {
-       Firebase.database().ref('UserList/').push({
-          email,
-          empresa,
-          complemento,
-          coc,
-          cel,
-          tel,
-        })
-        
-    }
+    } 
+    
 
   return (
 <View style={styles.all}>
@@ -79,6 +64,7 @@ if (!Firebase.apps.length) {
     <KeyboardAvoidingView>  
 
       <Image
+      
         style={styles.stretch}
         source={require('./NUM1.png')}/>
 
@@ -89,41 +75,7 @@ if (!Firebase.apps.length) {
        <TextInput value={password} onChangeText={setPassword} secureTextEntry={true} textContentType="password" style={styles.Tinput}/>
 
 
-            <Text style={{fontWeight: "bold", }}>Nome da Empresa ou Comprador:</Text>  
-       <TextInput value={empresa} onChangeText={setEmpresa} style={styles.Tinput}/> 
-
-            <Text style={{fontWeight: "bold", }}>Endereco:</Text> 
-       <TextInput value={endereco} onChangeText={setEndereco} style={styles.Tinput}/>
-
-
-
-
-       <View style={styles.subText}>
-           
-        <Text style={{fontWeight: "bold", marginRight: 60, }}>Complemento:</Text>  
-        <Text style={{fontWeight: "bold", marginLeft: 33, }}>CNPJ ou CPF:</Text> 
-        
-       </View>
-
-
-
-    <View style={{flexDirection: 'row',}}>
-        <TextInput value={complemento} onChangeText={setComplemento} style={styles.subInput}/>
-        <TextInput value={coc} onChangeText={setCoc} keyboardType={'number-pad'} style={styles.subInput}/>
-    </View>
-
-
-
-    <Text style={{fontWeight: "bold",}}>Celular:</Text>  
-       <TextInput value={cel} onChangeText={setCel} keyboardType={'number-pad'} style={styles.phone}/> 
-
-            <Text  style={{fontWeight: "bold",}}>Telefone:</Text> 
-       <TextInput value={tel} onChangeText={setTel} keyboardType={'number-pad'} style={styles.phone}/>
-
-       
-
-
-        <TouchableOpacity onPress={() => navigation.navigate(name="Cad2", component={Cad2Screen} && handleSubmit() && writeUserdata())}>
+        <TouchableOpacity onPress={() => handleSubmit()}>
 
              <View style={styles.buttons}>
                  <Text style={styles.buttonText}>Proximo</Text>
