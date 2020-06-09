@@ -37,7 +37,7 @@ function HomeScreen() {
               component={StatScreen} 
               independent={true} 
               options={{
-                tabBarLabel: 'Status',
+                tabBarLabel: 'Info',
                 tabBarIcon: ({ color }) => (
                   <Icon name="assessment" color={color} size={30} />
                 ),

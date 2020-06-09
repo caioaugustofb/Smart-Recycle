@@ -77,7 +77,6 @@ function CadScreen({ navigation }) {
 
 
 
-
        <View style={styles.subText}>
            
         <Text style={{fontWeight: "bold", marginRight: 60, }}>Complemento:</Text>  

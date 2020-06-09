@@ -102,10 +102,11 @@ function MenuScreen ()  {
     }}>
       CONTACTAR TRANSPORTE
     </Text>
+
     <Image
     style={styles.stretch}
-    source={require('./Phone.png')}/>
-
+    source={require('./Phone.png')}
+    />
       </ScrollView>
      </View>
     
