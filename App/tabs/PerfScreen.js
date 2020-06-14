@@ -57,7 +57,7 @@ function PerfScreen ()  {
             <Text style={{fontWeight: "bold",color:'#000', marginTop: "40%",  }}>Icone</Text>
         </View>
        <Text style={{fontWeight: "bold",color:'#000', marginTop: "6%",marginLeft: '5%',  }}>
-        Empresa: {empresa} {"\n"} Endereco: {endereco}
+        Empresa: {empresa} {"\n"}Endereco: {endereco}
        </Text>
        
         
@@ -134,7 +134,7 @@ function PerfScreen ()  {
 const styles = StyleSheet.create({
   all: {
     flex: 1,
-    backgroundColor: "#40F1C6",
+    backgroundColor: "#7EEED9",
     alignItems: 'center',
     color: '#000000',
 },
@@ -190,6 +190,8 @@ Image3: {
   height: 100,
   marginLeft: '3.5%',
   marginTop: "3%",
+  backgroundColor: "#A3E4D7",
+  borderWidth: 1,
 },
 //imagem
 tab: {

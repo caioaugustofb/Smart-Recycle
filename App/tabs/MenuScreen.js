@@ -117,7 +117,7 @@ function MenuScreen ()  {
 const styles = StyleSheet.create({
   all: {
     flex: 1,
-    backgroundColor: "#40F1C6",
+    backgroundColor: "#7EEED9",
     alignItems: 'center',
     color: '#000000',
 },
