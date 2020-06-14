@@ -6,9 +6,9 @@ Smart Recycle é um projeto dedicado para a melhoria de coleta de lixo através 
 
 Link para o modo apresentação no emulador: https://marvelapp.com/61e7g72
 
-## Fluxo de Cadastro (Erro duplicado)
+## Fluxo de Cadastro
 
-https://giphy.com/gifs/SULBRRtYbdfCswlh1L
+
 
 
 
@@ -19,5 +19,3 @@ https://giphy.com/gifs/SULBRRtYbdfCswlh1L
 * Caio Augusto
 * Danilo Castro
 * David Cabral
-
-*TESTE*
