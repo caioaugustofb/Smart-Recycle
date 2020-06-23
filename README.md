@@ -6,34 +6,23 @@ Smart Recycle é um projeto dedicado para a melhoria de coleta de lixo através 
 
 Link para o modo apresentação no emulador: https://marvelapp.com/61e7g72
 
-- Tela de login
+## Fluxo do Cadastro
 
-![login](Images/TELA%203.jpg)
+![Fluxo do Cadastro](https://github.com/caioaugustofb/Smart-Recycle/blob/master/FLUXO%20DO%20CADASTRO.gif)
 
-- Tela de Cadastro (Passo 1)
+## Fluxo do App
 
-![Cad1](Images/TELA%204.jpg)
+![Fluxo do App](https://github.com/caioaugustofb/Smart-Recycle/blob/master/FLUXO%20DO%20APP.gif)
 
-- Tela de Cadastro (Passo 2)
+## Guia para download do app
 
-![Cad2](Images/TELA%205.jpg)
+Passo 1 - Abra a Apple Store no seu celular
 
-- Tela de Cadastro (Passo 3)
+Passo 2 - Procure por "Smart Recycle"
 
-![Cad3](Images/TELA%206.jpg)
+Passo 3 - Clique em "Instalar" e aguarde o download do app
 
-- Tela Principal
-
-![Principal](Images/TELA%201.jpg)
-
-- Tela de Estatísticas
-
-![Estatistica](Images/TELA%202.jpg)
-
-- Tela de Perfil/Conquistas
-
-![Perfil](Images/TELA%207.jpg)
-
+Pronto! Seu download foi concluído e seu app está pronto para ser usado.
 
 ## Equipe
 
@@ -41,5 +30,3 @@ Link para o modo apresentação no emulador: https://marvelapp.com/61e7g72
 * Caio Augusto
 * Danilo Castro
 * David Cabral
-
-*TESTE*
