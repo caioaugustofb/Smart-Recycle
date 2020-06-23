@@ -12,14 +12,16 @@ import { View,
    TouchableWithoutFeedback,
    KeyboardAvoidingView,
    Image,
-   Header,
+   Switch,
    useState,
    ActivityIndicator
 } from 'react-native';
 import CadScreen from './Cad';
 import HomeScreen from '../tabs/HomeScreen';
 import  Firebase  from 'react-native-firebase';
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
+Icon.loadFont();
 
  
 function LogScreen({ navigation }) {
@@ -29,7 +31,8 @@ function LogScreen({ navigation }) {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [activity, setActivity] = React.useState(false);
-    
+    const [visi, setVisi] = React.useState(true);
+    const toggleSwitch = () => setVisi(previousState => !previousState);
 
  async function handleSubmit(){
 
@@ -50,6 +53,9 @@ function LogScreen({ navigation }) {
          console.log('try2:',activity);
      }
     }
+    function ts(){
+        toggleSwitch()
+    }
 
   return (
 <View style={styles.all}>
@@ -62,10 +68,16 @@ function LogScreen({ navigation }) {
         </View>
 
             <Text style={{fontWeight: "bold", marginTop: "25%", marginLeft: "20%",}}>E-mail</Text>  
-            <TextInput value={email} onChangeText={setEmail} keyboardType={'email-address'} style={styles.Tinput}/>
+        <TextInput value={email} onChangeText={setEmail} keyboardType={'email-address'} style={styles.Tinput}/>
 
             <Text style={{fontWeight: "bold", marginLeft: "20%",}}>Senha</Text> 
-       <TextInput value={password} onChangeText={setPassword} secureTextEntry={true} textContentType="password"   style={styles.Tinput}/>
+
+         <View style={{flexDirection: 'row'}}>   
+        <TextInput value={password} onChangeText={setPassword} secureTextEntry={visi} textContentType="password"   style={styles.Tinput}>
+                 
+        </TextInput>
+                <Icon onPress={() => ts()} name="remove-red-eye" size={30} />
+        </View>
 
         <TouchableOpacity onPress={() => handleSubmit()}>
 
