@@ -16,13 +16,13 @@ Link para o modo apresentação no emulador: https://marvelapp.com/61e7g72
 
 ## Guia para download do app
 
-Passo 1 - Abra a Apple Store no seu celular
+Passo 1 - Clique no botão clone no github.
 
-Passo 2 - Procure por "Smart Recycle"
+Passo 2 - Copie a url gerada.
 
-Passo 3 - Clique em "Instalar" e aguarde o download do app
+Passo 3 - Abra sua IDE e siga esses passos "https://github.com/rnanc/Tutorial_Git".
 
-Pronto! Seu download foi concluído e seu app está pronto para ser usado.
+Passo 4 - Rode o projeto com seu emulador e estará pronto para uso, aproveite!
 
 ## Equipe
 
