@@ -6,13 +6,13 @@ Smart Recycle é um projeto dedicado para a melhoria de coleta de lixo através 
 
 Link para o modo apresentação no emulador: https://marvelapp.com/61e7g72
 
-## Fluxo do Cadastro
+## Video do Produto
 
-![Fluxo do Cadastro](https://github.com/caioaugustofb/Smart-Recycle/blob/master/FLUXO%20DO%20CADASTRO.gif)
+Link para o video: https://www.youtube.com/watch?v=R6HwcN70DPw
 
-## Fluxo do App
+## Balança Integrada (caixa de som representando o lixo reciclavel)
 
-![Fluxo do App](https://github.com/caioaugustofb/Smart-Recycle/blob/master/FLUXO%20DO%20APP.gif)
+![Balança](https://github.com/caioaugustofb/Smart-Recycle/blob/master/FLUXO%20DO%20CADASTRO.gif)
 
 ## Guia para download do app
 
