@@ -10,10 +10,6 @@ Link para o modo apresentação no emulador: https://marvelapp.com/61e7g72
 
 Link para o video: https://www.youtube.com/watch?v=R6HwcN70DPw
 
-## Balança Integrada (caixa de som representando o lixo reciclavel)
-
-![Balança](https://github.com/caioaugustofb/Smart-Recycle/blob/master/GIF%20BALAN%C3%87A.mp4)
-
 ## Guia para download do app
 
 Passo 1 - Clique no botão clone no github.
