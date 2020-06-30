@@ -8,7 +8,9 @@ Link para o modo apresentação no emulador: https://marvelapp.com/61e7g72
 
 ## Video do Produto
 
-Link para o video: https://www.youtube.com/watch?v=R6HwcN70DPw
+![Gif](https://github.com/caioaugustofb/Smart-Recycle/blob/master/VIDEO%20DO%20PRODUTO.gif)
+
+Link para o video com áudio: https://www.youtube.com/watch?v=R6HwcN70DPw
 
 ## Balança Integrada (caixa de som representando o lixo reciclavel)
 
