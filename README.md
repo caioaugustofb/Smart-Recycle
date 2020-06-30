@@ -12,7 +12,7 @@ Link para o video: https://www.youtube.com/watch?v=R6HwcN70DPw
 
 ## Balança Integrada (caixa de som representando o lixo reciclavel)
 
-![Balança](https://github.com/caioaugustofb/Smart-Recycle/blob/master/FLUXO%20DO%20CADASTRO.gif)
+![Balança](https://github.com/caioaugustofb/Smart-Recycle/blob/master/GIF%20BALAN%C3%87A.mp4)
 
 ## Guia para download do app
 
